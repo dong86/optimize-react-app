@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import AddTodoListButton from './AddTodoListButton';
+import { Clock } from './Clock';
 import './App.css';
 
 function App() {
+  const [currTick, setCurrTick] = useState(1);
+
+  const updateTick = () => {
+    setCurrTick(currTick + 1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Optimize Component</h2>
+      <p>Tick: {currTick}</p>
+      <Clock onTicking={updateTick}/>
+      <AddTodoListButton onClick={() => console.log('Adding new todo...')}/>
     </div>
   );
 }
